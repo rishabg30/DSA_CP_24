@@ -1,0 +1,26 @@
+1
+Enter left child of node 1: 
+2
+Enter left child of node 2: 
+3
+Enter left child of node 3: 
+4
+Enter left child of node 4: 
+-1
+Enter right child of node 4: 
+-1
+Enter right child of node 3: 
+5
+Enter left child of node 5: 
+-1
+Enter right child of node 5: 
+-1
+Enter right child of node 2: 
+-1
+Enter right child of node 1: 
+20
+Enter left child of node 20: 
+-1
+Enter right child of node 20: 
+-1
+4 5 3 2 20 1 
