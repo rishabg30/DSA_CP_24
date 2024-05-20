@@ -16,8 +16,8 @@ public:
 };
 
 /*
-Time complexity: O()
-Space complexity: O()
+Time complexity: O(N)
+Space complexity: O(N)
 */
 
 /*-------------------Write code downwards--------------------------------------------------------------*/
@@ -41,7 +41,47 @@ TreeNode *createBinaryTree() {
 	return temp;
 }
 
-vector<int> inOrder(Node* root) {
+vector<int> inOrder(TreeNode* root) {
+	if (root == NULL) {
+		return {};
+	}
+	stack<TreeNode *>st;
+	stack<bool>visited;
+	st.push(root);
+	visited.push(0);
+
+
+	vector<int>ans;
+	while (st.size() != 0) {
+		//Take out the topmost node from stack and its count from visited stack
+		TreeNode *node = st.top();
+		st.pop();
+		bool count = visited.top();
+		visited.pop();
+
+		if (count == 0) {
+			//It has been visited first node, [Left,Root,Right]
+			//Therefore first push right child so that it comes in last
+			if (node->right) {
+				st.push(node->right);
+				visited.push(0);
+			}
+			//Then push the current node
+			st.push(node);
+			visited.push(1); //Indicating it has been visited once
+
+			//Now push left child so that it comes in top
+			if (node->left) {
+				st.push(node->left);
+				visited.push(0);
+			}
+		}
+		else {
+			//It has been visited once already, therefore store the data
+			ans.push_back(node->data);
+		}
+	}
+	return ans;
 }
 signed main()
 {

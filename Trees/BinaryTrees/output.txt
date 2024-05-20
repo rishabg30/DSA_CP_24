@@ -23,4 +23,4 @@ Enter left child of node 20:
 -1
 Enter right child of node 20: 
 -1
-4 5 3 2 20 1 
+4 3 5 2 1 20 

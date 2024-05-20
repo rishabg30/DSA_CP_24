@@ -50,7 +50,7 @@ vector<int> preOrder(TreeNode* root) {
 	stack<TreeNode *>st;
 	st.push(root);
 	while (st.size() != 0) {
-		//PreOrder -> PrintNode, Left, Right
+		//PreOrder -> PrintNode, left, Right
 		//Step 1: Print the element
 		TreeNode *node = st.top();
 		st.pop();
