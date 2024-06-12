@@ -1,0 +1,23 @@
+//Modulo Arithmetic
+
+1 -> (a + b) % m = (a % m + b % m) % m
+eg. (10 + 4) % 3 = (10 % 3 + 4 % 3) % 3 = (1 + 1) % 3 = 2
+
+2 -> (a - b) % m = (a % m - b % m) % m
+eg. (10 - 4) % 3 = (10 % 3 - 4 % 3) % 3 = (1 - 1) % 3 = 0
+But here's a catch what if we have (9 - 12) % 7
+Then in these cases what we can do is add m in the equation
+(9 - 12) % 7 = (9 % 7 - 12 % 7 + 7) % 7 = (2 - 5 + 7) % 7 = 4
+
+3 -> (a * b) % m = (a % m * b % m) % m
+
+4 -> (a ^ b) % m = (a*a*a*a ....b times) % m
+We can write this as a ^ b = (a ^ (b / 2)) * (a ^ (b / 2)) [for even powers]
+and for odd powers a ^ b = (a ^ (b / 2)) * (a ^ (b / 2)) * a
+
+5 -> (a / b) % m = a * (1 / b) = a * (b^-1) = a * (inversemodulo of b) 
+inversemodulo of b = pow(b, m-2) where m is prime [proof by fermat's little theorem]
+therefore (a / b) % m = (a * inversemodulo(b)) % m
+eg. (15/ 89) % 17 = 15 * inversemodulo(89) % 17 = 15 * pow(89, 15) % 17
+
+//Note if m is not prime then Euler's Toient function is used.
