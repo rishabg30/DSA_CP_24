@@ -5,8 +5,8 @@ void printArray_1D(vector<int>&arr) {for (auto it : arr) {cout << it << " ";} co
 void printArray_2D(vector<vector<int>>&arr) {for (auto it : arr) {for (auto it2 : it) {cout << it2 << " ";} cout << endl;}}
 
 /*
-Time complexity: O()
-Space complexity: O()
+Time complexity: O(V + 2E)
+Space complexity: O(V)
 */
 
 /*-------------------Write code downwards--------------------------------------------------------------*/
