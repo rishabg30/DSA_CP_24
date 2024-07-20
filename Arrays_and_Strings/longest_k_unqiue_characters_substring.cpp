@@ -6,28 +6,37 @@ void printArray_2D(vector<vector<int>>&arr) {for (auto it : arr) {for (auto it2 
 
 /*
 Time complexity: O(N)
-Space complexity: O(number of characters possible)
+Space complexity: O(1)
 */
 
 /*-------------------Write code downwards--------------------------------------------------------------*/
 
-int lengthOfLongestSubstring(string str) {
+int longestKSubstr(string str, int k) {
 	int n = str.size();
+	int start = 0, end = 0, max_window = -1;
 	map<char, int>mp;
 
-	int start = 0, end = 0, max_window = 0;
 	while (end < n) {
+		//Push the character in the map
 		mp[str[end]]++;
+
 		/*
-		Until freq of any character is > 1 reduce the window as
-		window is not possible
+		if map will contain more than k distinct characters
+		then it cannot be treated as a window
 		*/
-		while (mp[str[end]] > 1) {
+		while (mp.size() > k) {
 			mp[str[start]]--;
+			if (mp[str[start]] == 0) {
+				mp.erase(str[start]);
+			}
 			start++;
 		}
-		int curr_window = (end - start) + 1;
-		max_window = max(max_window, curr_window);
+
+		//if there are k distinct characters then only it can be treated as a window
+		if (mp.size() == k) {
+			int curr_window = end - start + 1;
+			max_window = max(curr_window, max_window);
+		}
 		end++;
 	}
 	return max_window;
@@ -43,5 +52,6 @@ signed main()
 	Take Input here if needed
 	*/
 	string str; cin >> str;
-	cout << lengthOfLongestSubstring(str) << endl;
+	int k; cin >> k;
+	cout << longestKSubstr(str, k) << endl;
 }
